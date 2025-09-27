@@ -35,8 +35,8 @@ If you prefer to install manually, here's what you need to do (roughly):
 
    ```sh
    #!/bin/bash
-   
-   export CERTBOT_DNS_NAMECOM_CONFIG=/path/to/your/config.json  
+
+   export CERTBOT_DNS_NAMECOM_CONFIG=/path/to/your/config.json
    /usr/bin/certbot-dns-namecom.py $@
    ```
 
@@ -50,10 +50,10 @@ Once installed (and configured), all you have to do to issue a certificate is th
 
 ```sh
 # First do a dry run to make sure it's going to work properly
-certbot certonly --manual --manual-auth-hook /usr/bin/certbot-dns-namecom.py -d your-domain.com --agree-tos --email you@your-domain.com --dry-run
+certbot certonly --manual --preferred-challenges dns --manual-auth-hook /usr/bin/certbot-dns-namecom.py -d your-domain.com --agree-tos --email you@your-domain.com --dry-run
 
 # Once that succeeds, you can do the real thing
-certbot certonly --manual --manual-auth-hook /usr/bin/certbot-dns-namecom.py -d your-domain.com --agree-tos --email you@your-domain.com
+certbot certonly --manual --preferred-challenges dns --manual-auth-hook /usr/bin/certbot-dns-namecom.py -d your-domain.com --agree-tos --email you@your-domain.com
 ```
 
 Doing this will create certificate and key files in a subdirectory in `/etc/letsencrypt/live/`. See
@@ -74,4 +74,3 @@ This repo uses [`peekaygee`](https://github.com/kael-shipman/peekaygee) for pack
 of this writing, there is only a Debian package for this plugin. However, if others know how to
 create packages for other systems, you are welcome to contribute additional package source materials
 here (and contribute implementations in `peekaygee` for making building and publishing easier).
-

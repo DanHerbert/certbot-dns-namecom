@@ -46,9 +46,9 @@ class NameComDNS:
 if __name__ == '__main__':
 
     # Get command line arguments
-    cmd = sys.argv[1]
-    if (cmd != "clean"):
-        cmd = "add"
+    cmd = 'add'
+    if len(sys.argv) > 1 and sys.argv[1] == 'clean':
+        cmd = 'clean'
 
     # Get and validate environment variables
     certbot_domain = os.environ.get('CERTBOT_DOMAIN')
@@ -110,6 +110,3 @@ if __name__ == '__main__':
     if (waitsec != 0):
         print("Waiting %s seconds for DNS to propagate" % waitsec)
         time.sleep(waitsec)
-
-
-
